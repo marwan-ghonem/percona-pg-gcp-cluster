@@ -1,0 +1,12 @@
+pgPrimary:
+  persistence:
+    size: 1Gi
+
+pgReplicas:
+  enabled: false
+
+pgBouncer:
+  enabled: false
+
+backup:
+  enabled: false
