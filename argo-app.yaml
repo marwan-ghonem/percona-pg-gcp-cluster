@@ -11,7 +11,7 @@ spec:
     path: percona-chart
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: percona-pg
+    namespace: my-new-namespace
   syncPolicy:
     automated:
       selfHeal: true
