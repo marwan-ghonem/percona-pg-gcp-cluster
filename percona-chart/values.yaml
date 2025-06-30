@@ -49,14 +49,11 @@ customReplicationTLSSecret:
 
 # autoCreateUserSchema: true
 
-# users:
-#   - name: rhino
-#     databases:
-#       - zoo
-#     options: "SUPERUSER"
-#     password:
-#       type: ASCII
-#     secretName: "rhino-credentials"
+users:
+  - name: perconapg
+    databases:
+      - pgtest
+    options: "CREATEDB CREATEROLE"
 
 # databaseInitSQL:
 #   key: init.sql
