@@ -18,6 +18,11 @@ crVersion: 2.6.0
 #     example-annotation: value
 #   labels:
 #     example-label: value
+metadata:
+  labels:
+    reconcile-trigger: "force-sync-1"
+
+
 repository: percona/percona-postgresql-operator
 image: percona/percona-postgresql-operator:2.6.0-ppg16.8-postgres
 imagePullPolicy: Always
@@ -54,6 +59,12 @@ users:
     databases:
       - pgtest
     options: "CREATEDB CREATEROLE"
+    
+  - name: dummyuser
+    databases:
+      - dummydb
+    options: "CREATEDB"
+
 
 # databaseInitSQL:
 #   key: init.sql
