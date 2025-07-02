@@ -59,11 +59,11 @@ users:
     databases:
       - pgtest
     options: "CREATEDB CREATEROLE"
-    
+
   - name: dummyuser
     databases:
       - dummydb
-    options: "CREATEDB"
+    options: "CREATEDB" #Added for Testing 
 
 
 # databaseInitSQL:
