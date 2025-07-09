@@ -1,0 +1,14 @@
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  name: percona-minio
+  namespace: {{ .Values.namespace }}
+spec:
+  credsSecret:
+    name: {{ .Values.credsSecret }}
+  pools:
+    - servers: 1
+      volumesPerServer: 1
+      size: 10Gi
+  mountPath: /export
+  requestAutoCert: false

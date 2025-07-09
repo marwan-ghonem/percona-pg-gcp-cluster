@@ -1,17 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minio-operator
+  name: minio-tenant
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/marwan-ghonem/percona-pg-gcp-cluster.git
-    path: minio-operator
-    targetRevision: MAIN
+    path: minio-tenant
+    targetRevision: main
+    helm:
+      values: values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: minio-operator
+    namespace: my-new-namespace
   syncPolicy:
     automated:
       selfHeal: true
