@@ -5,5 +5,5 @@ metadata:
   namespace: {{ .Values.namespace }}
 type: Opaque
 stringData:
-  accesskey: minioadmin
-  secretkey: minioadmin123
+  rootUser: minioadmin
+  rootPassword: minioadmin123
