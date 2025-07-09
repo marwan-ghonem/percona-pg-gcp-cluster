@@ -7,8 +7,16 @@ spec:
   credsSecret:
     name: {{ .Values.credsSecret }}
   pools:
-    - servers: 1
+    - name: pool-0                       # ✅ required
+      servers: 1
       volumesPerServer: 1
-      size: 10Gi
+      volumeClaimTemplate:
+        metadata:
+          name: data                     # ✅ required
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
   mountPath: /export
   requestAutoCert: false
