@@ -6,15 +6,26 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/marwan-ghonem/percona-pg-gcp-cluster.git
-    path: minio-tenant
-    targetRevision: main
+    repoURL: https://operator.min.io/
+    chart: tenant
+    targetRevision: 5.0.18         # or latest stable
     helm:
-      values: values.yaml
+      values: |
+        secret:
+          name: minio-creds
+        tenant:
+          name: percona-minio
+          namespace: my-new-namespace
+          requestAutoCert: false
+          pools:
+            - name: pool-0
+              servers: 1
+              volumesPerServer: 1
+              size: 10Gi
   destination:
     server: https://kubernetes.default.svc
     namespace: my-new-namespace
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
