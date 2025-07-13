@@ -12,7 +12,9 @@ spec:
     repoURL: https://github.com/marwan-ghonem/percona-pg-gcp-cluster.git
     path: minio-tenant
     targetRevision: main
+    helm: {}  # 👈 Tells ArgoCD this is a Helm chart
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
