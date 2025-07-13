@@ -6,25 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://operator.min.io/         # Official Helm repo
-    chart: tenant                             # The chart name
-    targetRevision: 5.0.11                    # Chart version (update if needed)
+    repoURL: https://github.com/marwan-ghonem/percona-pg-gcp-cluster.git
+    targetRevision: main
+    path: minio-tenant          # <== This is your local Helm chart path
     helm:
-      values: |
-        tenant:
-          name: percona-minio
-          credsSecret:
-            name: minio-creds                 # Must exist in the target namespace
-          pools:
-            - name: pool-0
-              servers: 1
-              volumesPerServer: 1
-              size: 10Gi
-          mountPath: /export
-          requestAutoCert: false
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: my-new-namespace               # Same namespace operator watches
+    namespace: my-new-namespace
   syncPolicy:
     automated:
       selfHeal: true
