@@ -1,5 +1,11 @@
-tenantName: percona-minio
-namespace: my-new-namespace
-rootUser: minioadmin
-rootPassword: SUPERSECRET
-storageSize: 10Gi
+tenants:
+  - name: percona-minio
+    namespace: my-new-namespace
+    credsSecret:
+      name: minio-creds
+    pools:
+      - servers: 1
+        name: pool-0
+        volumesPerServer: 1
+        size: 10Gi
+
