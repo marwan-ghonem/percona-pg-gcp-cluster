@@ -1,0 +1,5 @@
+tenantName: percona-minio
+namespace: my-new-namespace
+rootUser: minioadmin
+rootPassword: SUPERSECRET
+storageSize: 10Gi
