@@ -1,23 +1,15 @@
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
-  name: {{ .Values.tenantName }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.tenant.name }}
+  namespace: my-new-namespace
 spec:
   credsSecret:
-    name: minio-creds
+    name: {{ .Values.tenant.credsSecret.name }}
   pools:
-    - name: pool-0
-      servers: 1
-      volumesPerServer: 1
-      volumeClaimTemplate:
-        metadata:
-          name: data
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: {{ .Values.storageSize }}
-  mountPath: /export
-  requestAutoCert: false
+    - name: {{ .Values.tenant.pools[0].name }}
+      servers: {{ .Values.tenant.pools[0].servers }}
+      volumesPerServer: {{ .Values.tenant.pools[0].volumesPerServer }}
+      size: {{ .Values.tenant.pools[0].size }}
+  mountPath: {{ .Values.tenant.mountPath }}
+  requestAutoCert: {{ .Values.tenant.requestAutoCert }}
