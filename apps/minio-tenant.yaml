@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/marwan-ghonem/percona-pg-gcp-cluster.git
     targetRevision: main
-    path: minio-tenant          # <== This is your local Helm chart path
+    path: minio-tenant         # points to your local chart directory
     helm:
       valueFiles:
         - values.yaml
