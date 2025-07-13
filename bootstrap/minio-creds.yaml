@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-creds
+  namespace: my-new-namespace
+type: Opaque
+stringData:
+  rootUser: minioadmin
+  rootPassword: SUPERSECRET
